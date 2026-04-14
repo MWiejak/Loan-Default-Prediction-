@@ -42,3 +42,39 @@ Financial attributes, credit history indicators, employment-related details, and
 The output of the model is a predicted probability of default that can be used to support loan approval decisions. From a business perspective, the cost of approving a high-risk applicant (false negative) is substantially higher than rejecting a low-risk applicant (false positive), making sensitivity to default risk a key operational concern.
 
 Accordingly, **ROC–AUC is used as the primary metric for model comparison and selection**, as it provides a threshold-independent measure of how well models rank applicants by default risk under class imbalance. **Recall for defaulters (BAD = 1)** is reported at the default classification threshold to illustrate operational behavior and to reflect the higher cost of approving a borrower who later defaults, rather than to optimize a specific approval cutoff.
+
+## **Data Description:**
+
+The dataset used in this analysis is the Home Equity (HMEQ) dataset, which contains historical information on applicants who applied for home equity loans. The data was collected during the loan underwriting process and includes both applicant characteristics and loan-related attributes available at the time of loan approval. Additionally, the dataset records subsequent loan performance, making it suitable for building predictive credit risk models.
+The dataset consists of 5,960 loan records and 13 variables, where each row represents a unique loan applicant. Out of these variables, 12 are predictor variables and one is the target variable (BAD), which indicates whether the applicant ultimately defaulted or became severely delinquent on the loan.
+The variables in the dataset capture a combination of:
+
+Loan-related financial information
+
+Property valuation details
+
+Applicant employment characteristics
+
+Credit history indicators
+
+Variable Description
+
+* `BAD` - Binary target variable indicating loan performance
+    * Values: 
+        * 1 → Applicant defaulted or became severely delinquent
+        * 0 → Loan was successfully repaid
+* `LOAN` - Amount of the loan approved by the bank
+* `MORTDUE` - Amount due on the applicant’s existing mortgage
+* `VALUE` - Current market value of the property securing the loan
+* `REASON` - Purpose of the loan
+    * Values:
+        * HomeImp → Home improvement
+        * DebtCon → Debt consolidation
+* `JOB` - Type of job held by the applicant (e.g., managerial, self-employed, office worker)
+* `YOJ` - Number of years the applicant has been employed at their current job
+* `DEROG` - Number of major derogatory credit reports, indicating serious delinquencies or late payments
+* `DELINQ` - Number of delinquent credit lines, where payments were overdue by 30 to 60 days
+* `CLAGE` - Age of the oldest credit line in months
+* `NINQ` - Number of recent credit inquiries made by the applicant
+* `CLNO`- Total number of existing credit lines
+* `DEBTINC` - Debt-to-income ratio, calculated as total monthly debt payments divided by gross monthly income
